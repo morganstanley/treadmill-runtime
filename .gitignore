@@ -1,0 +1,16 @@
+**/.waf3*
+**/.waf*
+**/.lock-waf*
+.lock-waf*
+build
+callgrind.out.*
+perf.data*
+perflog
+vgcore.*
+result*
+**/result
+3rd
+waf
+wscript
+**/wscript
+clang_compilation_database.py

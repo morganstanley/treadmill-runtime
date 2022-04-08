@@ -1,0 +1,16 @@
+diff --git a/zookeeper-client/zookeeper-client-c/CMakeLists.txt b/zookeeper-client/zookeeper-client-c/CMakeLists.txt
+index 8400c10..0f92501 100644
+--- a/zookeeper-client/zookeeper-client-c/CMakeLists.txt
++++ b/zookeeper-client/zookeeper-client-c/CMakeLists.txt
+@@ -290,3 +290,11 @@ if(WANT_CPPUNIT)
+     "ZKROOT=${CMAKE_CURRENT_SOURCE_DIR}/../.."
+     "CLASSPATH=$CLASSPATH:$CLOVER_HOME/lib/clover*.jar")
+ endif()
++
++install(TARGETS hashtable DESTINATION lib)
++install(TARGETS zookeeper DESTINATION lib)
++install(TARGETS cli DESTINATION bin)
++file(GLOB includes include/*.h)
++file(GLOB generated generated/*.h)
++install(FILES ${includes} DESTINATION include)
++install(FILES ${generated} DESTINATION include)

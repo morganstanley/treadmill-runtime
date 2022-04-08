@@ -1,0 +1,38 @@
+diff --git a/Makefile b/Makefile
+index 126e2ca..8440831 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,3 +1,5 @@
++PREFIX ?= /usr/local
++
+ WARNINGS=                    \
+    -Werror                   \
+    -Wall                     \
+@@ -26,6 +28,27 @@ WARNINGS=                    \
+    -Wno-parentheses          \
+    -fdiagnostics-show-option
+
++all: libcpp-base64-17.a libcpp-base64-11.a
++
++libcpp-base64-17.a: base64-17.o
++	ar -rc $@ $<
++	ranlib $@
++
++libcpp-base64-11.a: base64-11.o
++	ar -rc $@ $<
++	ranlib $@
++
++install: \
++	$(PREFIX)/include/cpp-base64/base64.h \
++	$(PREFIX)/lib/libcpp-base64-17.a \
++	$(PREFIX)/lib/libcpp-base64-11.a
++
++$(PREFIX)/include/cpp-base64/%.h: %.h
++	install -D $< $@
++
++$(PREFIX)/lib/%.a: %.a
++	install -D $< $@
++
+ test: base64-test-11 base64-test-17
+ 	base64-test-11
+ 	base64-test-17
